@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">TheMovies</string>
+    <string name="already_have_an_account">alreadyhaveanaccount</string>
+    <string name="sahildsh_gmail_com">    sahildsh@gmail.com</string>
+    <string name="sahil_doshi">Sahil Doshi</string>
+    <string name="lists">Lists</string>
+    <string name="top_rated">Top Rated</string>
+    <string name="latest">Latest</string>
+    <string name="upcoming">Upcoming</string>
+    <string name="open">open</string>
+    <string name="close">close</string>
+    <string name="sign_in">Sign In</string>
+</resources>
