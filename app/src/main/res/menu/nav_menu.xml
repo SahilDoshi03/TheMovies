@@ -23,13 +23,17 @@
 
     </item>
 
-    <item android:title="@string/sign_in">
+    <item android:title="@string/profile">
 
         <menu>
 
             <item
                 android:id="@+id/nav_signIn"
                 android:title="@string/sign_in"/>
+
+            <item
+                android:id="@+id/nav_logout"
+                android:title="@string/logout"/>
 
         </menu>
 
