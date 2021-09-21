@@ -7,9 +7,13 @@ import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.fragment.app.Fragment
+import com.example.themovies.fragments.Latest
+import com.example.themovies.fragments.TopRated
+import com.example.themovies.fragments.Upcoming
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -29,7 +33,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val drawerLayout: DrawerLayout? = findViewById(R.id.drawerLayout)
+        val drawerLayout: DrawerLayout? = findViewById(R.id.drawer_Layout)
         val navView: NavigationView? = findViewById(R.id.nav_view)
         val headerView: View = navView!!.getHeaderView(0)
         val username = headerView.findViewById<TextView>(R.id.user_name)
@@ -51,32 +55,33 @@ class MainActivity : AppCompatActivity() {
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
+        val latestFragment = Latest()
+        val topRatedFragment = TopRated()
+        val upcomingFragment = Upcoming()
 
         navView.setNavigationItemSelectedListener {
-
-
-
-
+            drawerLayout?.closeDrawer(GravityCompat.START)
             when(it.itemId){
 
-                R.id.nav_latest -> Toast.makeText(this,"Clicked Latest", Toast.LENGTH_SHORT).show()
-                R.id.nav_toprated -> Toast.makeText(this,"Clicked Top Rated", Toast.LENGTH_SHORT).show()
-                R.id.nav_upcoming -> Toast.makeText(this,"Clicked Upcoming", Toast.LENGTH_SHORT).show()
+                R.id.nav_latest -> makeCurrentFragment(latestFragment)
+                R.id.nav_toprated -> makeCurrentFragment(topRatedFragment)
+                R.id.nav_upcoming -> makeCurrentFragment(upcomingFragment)
                 R.id.nav_signIn -> login()
                 R.id.nav_logout -> logout()
             }
+
             true
         }
 
         when {
             email!=null -> {
-                username.text = "$email"
+                username.text = email
             }
             phno!=null -> {
-                username.text = "$phno"
+                username.text = phno
             }
             sIA!=null -> {
-                username.setText(sIA.displayName)
+                username.text = sIA.displayName
             }
             else -> {
                 username.text = "Guest"
@@ -107,5 +112,10 @@ class MainActivity : AppCompatActivity() {
         startActivity(Intent(this,LoginActivity::class.java))
         finish()
     }
+    private fun makeCurrentFragment(fragment: Fragment) =
+        supportFragmentManager.beginTransaction().apply {
+            replace(R.id.drawer_Layout, fragment)
+            commit()
+        }
 
 }
