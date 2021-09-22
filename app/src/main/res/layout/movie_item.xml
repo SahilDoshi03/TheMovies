@@ -21,8 +21,8 @@
 
     <TextView
         android:id="@+id/tv_movieTitle"
-        android:layout_width="206dp"
-        android:layout_height="47dp"
+        android:layout_width="241dp"
+        android:layout_height="86dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:layout_toEndOf="@id/movie_poster"

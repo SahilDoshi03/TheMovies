@@ -22,9 +22,9 @@
             android:exported="true"
             android:label="Top Rated Movies"/>
         <activity
-            android:name=".LatestActivity"
+            android:name=".PopularActivity"
             android:exported="true"
-            android:label="Latest Movies"/>
+            android:label="Popular Movies"/>
         <activity
             android:name=".PhNoLogin"
             android:exported="true"

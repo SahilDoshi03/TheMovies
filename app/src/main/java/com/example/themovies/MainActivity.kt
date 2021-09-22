@@ -56,7 +56,7 @@ class MainActivity : AppCompatActivity() {
             drawerLayout?.closeDrawer(GravityCompat.START)
             when(it.itemId){
 
-                R.id.nav_latest ->startActivity(Intent(this,LatestActivity::class.java))
+                R.id.nav_popular ->startActivity(Intent(this,PopularActivity::class.java))
                 R.id.nav_toprated ->startActivity(Intent(this,TopRatedActivity::class.java))
                 R.id.nav_upcoming -> startActivity(Intent(this,UpcomingActivity::class.java))
                 R.id.nav_home -> {
