@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.themovies">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -12,17 +14,33 @@
         android:theme="@style/Theme.TheMovies"
         tools:ignore="AllowBackup">
         <activity
+            android:name=".UpcomingActivity"
+            android:exported="true"
+            android:label="Upcoming Movies"/>
+        <activity
+            android:name=".TopRatedActivity"
+            android:exported="true"
+            android:label="Top Rated Movies"/>
+        <activity
+            android:name=".LatestActivity"
+            android:exported="true"
+            android:label="Latest Movies"/>
+        <activity
             android:name=".PhNoLogin"
-            android:exported="true" />
+            android:exported="true"
+            android:label="Login with OTP"/>
         <activity
             android:name=".RegisterActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:label="Register"/>
         <activity
             android:name=".LoginActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:label="Login"/>
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:label="Home">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

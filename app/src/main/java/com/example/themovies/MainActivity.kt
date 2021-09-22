@@ -10,10 +10,6 @@ import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.fragment.app.Fragment
-import com.example.themovies.fragments.Latest
-import com.example.themovies.fragments.TopRated
-import com.example.themovies.fragments.Upcoming
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -55,18 +51,19 @@ class MainActivity : AppCompatActivity() {
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        val latestFragment = Latest()
-        val topRatedFragment = TopRated()
-        val upcomingFragment = Upcoming()
 
         navView.setNavigationItemSelectedListener {
             drawerLayout?.closeDrawer(GravityCompat.START)
             when(it.itemId){
 
-                R.id.nav_latest -> makeCurrentFragment(latestFragment)
-                R.id.nav_toprated -> makeCurrentFragment(topRatedFragment)
-                R.id.nav_upcoming -> makeCurrentFragment(upcomingFragment)
-                R.id.nav_signIn -> login()
+                R.id.nav_latest ->startActivity(Intent(this,LatestActivity::class.java))
+                R.id.nav_toprated ->startActivity(Intent(this,TopRatedActivity::class.java))
+                R.id.nav_upcoming -> startActivity(Intent(this,UpcomingActivity::class.java))
+                R.id.nav_home -> {
+                    startActivity(Intent(this,MainActivity::class.java))
+                    finish()
+                }
+                R.id.nav_signIn -> signIn()
                 R.id.nav_logout -> logout()
             }
 
@@ -96,10 +93,9 @@ class MainActivity : AppCompatActivity() {
         if(toggle.onOptionsItemSelected(item)){
             return true
         }
-
         return super.onOptionsItemSelected(item)
-    }
 
+    }
     @SuppressLint("SetTextI18n")
     fun logout(){
         Firebase.auth.signOut()
@@ -107,15 +103,8 @@ class MainActivity : AppCompatActivity() {
             user_name.text = "Guest"
         }
     }
-
-    private fun login() {
+    private fun signIn() {
         startActivity(Intent(this,LoginActivity::class.java))
         finish()
     }
-    private fun makeCurrentFragment(fragment: Fragment) =
-        supportFragmentManager.beginTransaction().apply {
-            replace(R.id.drawer_Layout, fragment)
-            commit()
-        }
-
 }

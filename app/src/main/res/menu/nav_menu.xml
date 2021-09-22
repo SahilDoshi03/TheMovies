@@ -3,7 +3,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <item android:title="@string/lists">
+    <item android:title="@string/home">
+
+        <menu>
+
+            <item
+                android:id="@+id/nav_home"
+                android:title="@string/home"/>
+
+        </menu>
+
+    </item>
+
+    <item android:title="@string/catalog">
 
         <menu>
 
@@ -18,9 +30,6 @@
             <item
                 android:id="@+id/nav_upcoming"
                 android:title="@string/upcoming"/>
-            <item
-                android:id="@+id/exp"
-                android:title="exp"/>
 
         </menu>
 
@@ -41,5 +50,6 @@
         </menu>
 
     </item>
+
 
 </menu>
