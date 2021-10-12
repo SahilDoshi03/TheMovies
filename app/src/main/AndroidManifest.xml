@@ -3,44 +3,55 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.themovies">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:icon="@drawable/photo"
+        android:label="@string/movie_catalog"
         android:supportsRtl="true"
         android:theme="@style/Theme.TheMovies"
         tools:ignore="AllowBackup">
         <activity
+            android:name=".FavouritesActivity"
+            android:exported="true"
+            android:label="Favourites" />
+        <activity
+            android:name=".InfoActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Design.NoActionBar" />
+        <activity
             android:name=".UpcomingActivity"
             android:exported="true"
-            android:label="Upcoming Movies"/>
+            android:label="Upcoming Movies" />
         <activity
             android:name=".TopRatedActivity"
             android:exported="true"
-            android:label="Top Rated Movies"/>
+            android:label="Top Rated Movies" />
         <activity
             android:name=".PopularActivity"
             android:exported="true"
-            android:label="Popular Movies"/>
+            android:label="Popular Movies" />
         <activity
             android:name=".PhNoLogin"
             android:exported="true"
-            android:label="Login with OTP"/>
+            android:label="Login with OTP" />
         <activity
             android:name=".RegisterActivity"
             android:exported="true"
-            android:label="Register"/>
+            android:label="Register" />
+        <activity
+            android:name=".ProfileActivity"
+            android:exported="true"
+            android:label="Profile Information"/>
         <activity
             android:name=".LoginActivity"
             android:exported="true"
-            android:label="Login"/>
+            android:label="@string/movie_catalog"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:label="Home">
+            android:label="Movies Catalog">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -1,5 +1,6 @@
 package com.example.themovies
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,15 +10,35 @@ import com.example.themovies.models.Movies
 import kotlinx.android.synthetic.main.movie_item.view.*
 
 class MoviesAdapter (
-    private val movies: List<Movies>
-): RecyclerView.Adapter<MoviesAdapter.MovieViewHolder>(){
+    private val movies: List<Movies>,
+    ): RecyclerView.Adapter<MoviesAdapter.MovieViewHolder>(){
 
-    class MovieViewHolder(view: View) : RecyclerView.ViewHolder(view){
-        private val IMAGE_BASE = "https://image.tmdb.org/t/p/w500/"
+    inner class MovieViewHolder(view: View) : RecyclerView.ViewHolder(view),View.OnClickListener{
+        private val imageBaseUrl = "https://image.tmdb.org/t/p/w500/"
+
+        init {
+            itemView.setOnClickListener(this)
+        }
+
+        override fun onClick(v: View?) {
+            val position = adapterPosition
+            if (position!=RecyclerView.NO_POSITION){
+                val intent = Intent(v?.context,InfoActivity::class.java)
+                intent.putExtra("movieId",movies[position].movieId)
+                intent.putExtra("position",position)
+                intent.putExtra("ogtitle", movies[position].title)
+                intent.putExtra("poster_path",movies[position].poster)
+                intent.putExtra("overview",movies[position].overview)
+                intent.putExtra("release_date",movies[position].release)
+                intent.putExtra("url",imageBaseUrl)
+                intent.putExtra("voteAverage",movies[position].vote_average.toString())
+                itemView.context.startActivity(intent)
+            }
+        }
+
         fun bindMovie(movie: Movies){
             itemView.tv_movieTitle.text = movie.title
-            itemView.tv_releaseDate.text = movie.release
-            Glide.with(itemView).load(IMAGE_BASE+movie.poster).into(itemView.movie_poster)
+            Glide.with(itemView).load(imageBaseUrl+movie.poster).into(itemView.movie_poster)
         }
     }
 
@@ -32,4 +53,5 @@ class MoviesAdapter (
     }
 
     override fun getItemCount(): Int = movies.size
+
 }

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".PhNoLogin"
-    android:background="@color/white">
+    android:background="@color/pale_black">
 
     <TextView
         android:id="@+id/tvPhLogin"
@@ -14,7 +14,7 @@
         android:layout_marginStart="20sp"
         android:layout_marginTop="80sp"
         android:text="@string/login"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -29,10 +29,10 @@
         android:inputType="textPersonName"
         android:text="@string/_91"
         android:hint="@string/international_prefix"
-        android:textColorHint="@color/black"
-        android:textColor="@color/black"
+        android:textColorHint="@color/pale_black"
+        android:textColor="@color/pale_black"
         android:textAlignment="center"
-        android:background="@color/browser_actions_divider_color"
+        android:background="@color/white"
         android:autofillHints="phone"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvPhLogin" />
@@ -41,18 +41,17 @@
         android:id="@+id/etPhNo"
         android:layout_width="200dp"
         android:layout_height="50dp"
-        android:layout_marginTop="28sp"
-        android:layout_marginEnd="20sp"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="16dp"
         android:autofillHints="phone"
         android:hint="@string/phone_number"
         android:textAlignment="center"
-        android:textColorHint="@color/black"
+        android:textColorHint="@color/pale_black"
         android:inputType="phone"
-        android:textColor="@color/black"
-        android:background="@color/browser_actions_divider_color"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvPhLogin"
-        tools:ignore="TextContrastCheck" />
+        android:textColor="@color/pale_black"
+        android:background="@color/white"
+        app:layout_constraintStart_toEndOf="@id/etPhNoPrefix"
+        app:layout_constraintTop_toBottomOf="@+id/tvPhLogin"/>
 
     <Button
         android:id="@+id/loginPhBtn"
@@ -61,10 +60,10 @@
         android:layout_marginStart="20sp"
         android:layout_marginTop="30sp"
         android:text="@string/login"
-        android:backgroundTint="@android:color/holo_red_light"
+        android:textColor="@color/white"
+        android:backgroundTint="#535050"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etPhNoPrefix"
-        tools:ignore="DuplicateSpeakableTextCheck" />
+        app:layout_constraintTop_toBottomOf="@+id/etPhNoPrefix"/>
 
     <TextView
         android:id="@+id/tvVerify"
@@ -73,7 +72,7 @@
         android:layout_marginStart="20sp"
         android:layout_marginTop="30sp"
         android:text="@string/verify_mobile"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -87,10 +86,10 @@
         android:layout_marginTop="30sp"
         android:ems="10"
         android:inputType="numberPassword"
-        android:textColor="@color/black"
-        android:textColorHint="@color/black"
+        android:textColor="@color/pale_black"
+        android:textColorHint="@color/pale_black"
         android:textAlignment="center"
-        android:background="@color/browser_actions_divider_color"
+        android:background="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvVerify"
         android:autofillHints="phone"
@@ -103,7 +102,8 @@
         android:layout_marginStart="20sp"
         android:layout_marginTop="30sp"
         android:text="@string/verify"
-        android:backgroundTint="@android:color/holo_red_light"
+        android:textColor="@color/white"
+        android:backgroundTint="#535050"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etOTP" />
 

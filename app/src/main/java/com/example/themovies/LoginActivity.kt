@@ -5,15 +5,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
-import android.widget.EditText
 import android.widget.Toast
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.google.android.gms.common.SignInButton
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -21,7 +18,6 @@ import kotlinx.android.synthetic.main.activity_login.*
 
 
 class LoginActivity : AppCompatActivity() {
-
     companion object{
         const val RC_SIGN_IN = 9001
         const val TAG = "LoginActivity"
@@ -34,9 +30,7 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        val etloginemail = findViewById<EditText>(R.id.et_login_email)
-        val etloginpassword = findViewById<EditText>(R.id.et_login_password)
-        val btnSignIn = findViewById<SignInButton>(R.id.googleSignInBtn)
+        supportActionBar?.title = getString(R.string.login)
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestEmail()
             .requestIdToken(getString(R.string.default_web_client_id))
@@ -50,29 +44,30 @@ class LoginActivity : AppCompatActivity() {
             finish()
         }
 
-        btn_register.setOnClickListener {
+        tv_register.setOnClickListener {
             startActivity(Intent(this@LoginActivity, RegisterActivity::class.java))
             finish()
         }
         loginbtn.setOnClickListener {
             when {
-                TextUtils.isEmpty(etloginemail.text.toString().trim { it <= ' ' }) -> {
+                TextUtils.isEmpty(et_login_email.text.toString().trim { it <= ' ' }) -> {
                     Toast.makeText(
                         this@LoginActivity,
                         "Please Enter Email.",
                         Toast.LENGTH_SHORT
                     ).show()
                 }
-                TextUtils.isEmpty(etloginpassword.text.toString().trim { it <= ' ' }) -> {
+                TextUtils.isEmpty(et_login_password.text.toString().trim { it <= ' ' }) -> {
                     Toast.makeText(
                         this@LoginActivity,
                         "Please Enter Password.",
                         Toast.LENGTH_SHORT
                     ).show()
                 }
+
                 else -> {
-                    val email: String = etloginemail.text.toString().trim { it <= ' ' }
-                    val password: String = etloginpassword.text.toString().trim { it <= ' ' }
+                    val email: String = et_login_email.text.toString().trim { it <= ' ' }
+                    val password: String = et_login_password.text.toString().trim { it <= ' ' }
 
                     FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password)
                         .addOnCompleteListener { task ->
@@ -102,7 +97,7 @@ class LoginActivity : AppCompatActivity() {
                 }
             }
         }
-        btnSignIn.setOnClickListener{
+        googleSignInBtn.setOnClickListener{
             signIn()
         }
     }
@@ -125,12 +120,6 @@ class LoginActivity : AppCompatActivity() {
             }
         }
     }
-    override fun onStart() {
-        super.onStart()
-        // Check if user is signed in (non-null) and update UI accordingly.
-        val currentUser = auth.currentUser
-        updateUI(currentUser)
-    }
 
     private  fun doAuthentication(idToken: String?){
         val credentials = GoogleAuthProvider.getCredential(idToken,null)
@@ -142,24 +131,18 @@ class LoginActivity : AppCompatActivity() {
                         "You were logged in successfully",
                         Toast.LENGTH_SHORT
                     ).show()
-                    val user = auth.currentUser
-                    updateUI(user)
-                    intent.putExtra("Gemail",user)
-                    startActivity(Intent(this,MainActivity::class.java))
+
+                    startActivity(Intent(this,ProfileActivity::class.java))
                     finish()
                 }else{
                     Toast.makeText(this,
                         task.exception!!.message.toString(),
                         Toast.LENGTH_SHORT).show()
-                    updateUI(null)
                 }
             }
     }
     private fun signIn() {
         val signInIntent = googleSignInClient.signInIntent
         startActivityForResult(signInIntent, RC_SIGN_IN)
-    }
-    private fun updateUI(user: FirebaseUser?) {
-
     }
 }

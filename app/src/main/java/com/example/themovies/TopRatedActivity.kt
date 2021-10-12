@@ -2,6 +2,7 @@ package com.example.themovies
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.themovies.models.Movies
 import com.example.themovies.models.MoviesResponse
@@ -13,6 +14,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class TopRatedActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_top_rated)
@@ -22,7 +24,9 @@ class TopRatedActivity : AppCompatActivity() {
         getMovieData { movies: List<Movies> ->
             rv_topRated.adapter = MoviesAdapter(movies)
         }
+
     }
+
     private  fun getMovieData(callback: (List<Movies>)->Unit){
         val apiService = MoviesApiService.getInstance().create(TopRatedMoviesApiInterface::class.java)
         apiService.getTRMovieList().enqueue(object : Callback<MoviesResponse> {
@@ -35,5 +39,10 @@ class TopRatedActivity : AppCompatActivity() {
 
             }
         })
+    }
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.searchbar_menu, menu)
+
+        return true
     }
 }

@@ -2,6 +2,7 @@ package com.example.themovies
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.themovies.models.Movies
 import com.example.themovies.models.MoviesResponse
@@ -23,6 +24,8 @@ class UpcomingActivity : AppCompatActivity() {
             rv_upcoming.adapter = MoviesAdapter(movies)
         }
     }
+
+
     private  fun getMovieData(callback: (List<Movies>)->Unit){
         val apiService = MoviesApiService.getInstance().create(UpcomingMoviesApiInterface::class.java)
         apiService.getUMovieList().enqueue(object : Callback<MoviesResponse> {
@@ -35,6 +38,11 @@ class UpcomingActivity : AppCompatActivity() {
 
             }
         })
+    }
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.searchbar_menu, menu)
+
+        return true
     }
 
 }

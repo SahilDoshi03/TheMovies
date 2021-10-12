@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "365134289581",
+    "firebase_url": "https://themovies-bd219-default-rtdb.firebaseio.com",
+    "project_id": "themovies-bd219",
+    "storage_bucket": "themovies-bd219.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:365134289581:android:d79574a755054af59a0424",
+        "android_client_info": {
+          "package_name": "com.example.themovies"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "365134289581-8dsei6igi8uml5bhsbbmm3efk77kkbo3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.themovies",
+            "certificate_hash": "947a4e3fc95cd3da685567d826239f9fcbe32b7d"
+          }
+        },
+        {
+          "client_id": "365134289581-62v4o81die0v8nanti6833si5emo37rh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBSRKJhVrL5-EFTDfuQridR9_hkGozNcAc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "365134289581-62v4o81die0v8nanti6833si5emo37rh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

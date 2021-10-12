@@ -2,6 +2,7 @@ package com.example.themovies
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.themovies.models.Movies
 import com.example.themovies.models.MoviesResponse
@@ -17,13 +18,13 @@ class PopularActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_popular)
 
-        rv_latest.layoutManager = LinearLayoutManager(this)
-        rv_latest.setHasFixedSize(true)
+        rv_popular.layoutManager = LinearLayoutManager(this)
+        rv_popular.setHasFixedSize(true)
         getMovieData { movies: List<Movies> ->
-            rv_latest.adapter = MoviesAdapter(movies)
+            rv_popular.adapter = MoviesAdapter(movies)
         }
-
     }
+
     private  fun getMovieData(callback: (List<Movies>)->Unit){
         val apiService = MoviesApiService.getInstance().create(PopularMoviesApiInterface::class.java)
         apiService.getLMovieList().enqueue(object : Callback<MoviesResponse> {
@@ -38,5 +39,12 @@ class PopularActivity : AppCompatActivity() {
         })
     }
 
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.searchbar_menu, menu)
+
+        return true
+    }
+
 }
+
 
