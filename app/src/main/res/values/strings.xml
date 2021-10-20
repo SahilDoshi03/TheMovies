@@ -43,7 +43,7 @@
     <string name="popular">Popular</string>
     <string name="overview">Overview</string>
     <string name="average_votes">Average Votes</string>
-    <string name="trailer">Trailer</string>
+    <string name="trailer">Trailers</string>
     <string name="genre">Genre</string>
     <string name="search_title">search_title</string>
     <string name="arrow">arrow</string>
@@ -57,7 +57,7 @@
     <string name="email1">Email:</string>
     <string name="email_main">Email: %1$s</string>
     <string name="name_main">Name: %1$s</string>
-    <string name="phno_main">Phone Number: %1$s</string>
+    <string name="dob_main">Date of Birth: %1$s</string>
     <string name="set_password">Set Password</string>
     <string name="name">Name</string>
     <string name="email_icon">email icon</string>
@@ -66,5 +66,6 @@
     <string name="name_icon">name icon</string>
     <string name="please_wait">Please Wait...</string>
     <string name="save">Save</string>
+    <string name="favourite">Favourite</string>
 
 </resources>

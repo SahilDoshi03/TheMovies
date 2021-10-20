@@ -32,6 +32,7 @@ class MoviesAdapter (
                 intent.putExtra("release_date",movies[position].release)
                 intent.putExtra("url",imageBaseUrl)
                 intent.putExtra("voteAverage",movies[position].vote_average.toString())
+                intent.putExtra("obj",movies[position])
                 itemView.context.startActivity(intent)
             }
         }

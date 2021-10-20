@@ -92,12 +92,12 @@
                     android:textColor="@android:color/white"
                     android:textSize="15sp" />
 
-                <Button
-                    android:id="@+id/info_button"
+                <TextView
+                    android:id="@+id/tv_trailers"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
-                    android:layout_marginBottom="16dp"
+                    android:layout_marginBottom="2dp"
                     android:backgroundTint="@color/black"
                     android:text="@string/trailer"
                     android:textColor="@color/white"
@@ -105,17 +105,17 @@
                     app:layout_constraintStart_toEndOf="@+id/movie_poster" />
             </LinearLayout>
 
-            <ImageButton
+            <ImageView
                 android:id="@+id/fav_button"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="16dp"
                 android:padding="16dp"
-                android:background="@color/pale_black"
+                android:src="@drawable/ic_not_favourite"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:src="@drawable/ic_not_favourite"/>
+                android:contentDescription="@string/favourite" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

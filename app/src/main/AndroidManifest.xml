@@ -47,16 +47,19 @@
         <activity
             android:name=".LoginActivity"
             android:exported="true"
-            android:label="@string/movie_catalog"/>
-        <activity
-            android:name=".MainActivity"
-            android:exported="true"
-            android:label="Movies Catalog">
+            android:label="@string/movie_catalog">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label="Movies Catalog">
         </activity>
     </application>
 

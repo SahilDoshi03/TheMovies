@@ -121,10 +121,10 @@
 
     <Button
         android:id="@+id/phnobtn"
-        android:layout_width="192dp"
-        android:layout_height="52dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginStart="48dp"
+        android:layout_width="122dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="128dp"
+        android:layout_marginTop="28dp"
         android:backgroundTint="#FACE3E"
         android:text="@string/login_with_OTP"
         android:textColor="@color/pale_black"

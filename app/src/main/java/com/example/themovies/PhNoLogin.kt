@@ -73,10 +73,9 @@ class PhNoLogin : AppCompatActivity() {
         if(number.isNotEmpty()){
             number = prefixno+number
             sendVerificationCode(number)
+            Toast.makeText(this, "OTP sent", Toast.LENGTH_SHORT).show()
         }else{
-            Toast.makeText(this,
-                "Enter Mobile Number",
-                Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Enter Mobile Number", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -93,12 +92,8 @@ class PhNoLogin : AppCompatActivity() {
         auth.signInWithCredential(credential)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    startActivity(Intent(applicationContext, MainActivity::class.java))
-                    Toast.makeText(
-                        this,
-                        "You were logged in successfully",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    Toast.makeText(this, "You were logged in successfully", Toast.LENGTH_SHORT).show()
+                    startActivity(Intent(this,ProfileActivity::class.java))
                     finish()
 // ...
                 } else {

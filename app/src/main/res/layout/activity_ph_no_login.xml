@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -14,7 +15,7 @@
         android:layout_marginStart="20sp"
         android:layout_marginTop="80sp"
         android:text="@string/login"
-        android:textColor="@color/white"
+        android:textColor="@color/yellow"
         android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -60,8 +61,8 @@
         android:layout_marginStart="20sp"
         android:layout_marginTop="30sp"
         android:text="@string/login"
-        android:textColor="@color/white"
-        android:backgroundTint="#535050"
+        android:textColor="@color/pale_black"
+        android:backgroundTint="@color/yellow"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etPhNoPrefix"/>
 
@@ -72,7 +73,7 @@
         android:layout_marginStart="20sp"
         android:layout_marginTop="30sp"
         android:text="@string/verify_mobile"
-        android:textColor="@color/white"
+        android:textColor="@color/yellow"
         android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -102,8 +103,8 @@
         android:layout_marginStart="20sp"
         android:layout_marginTop="30sp"
         android:text="@string/verify"
-        android:textColor="@color/white"
-        android:backgroundTint="#535050"
+        android:textColor="@color/pale_black"
+        android:backgroundTint="@color/yellow"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etOTP" />
 

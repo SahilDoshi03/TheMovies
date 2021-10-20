@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
 import android.widget.Toast
+import com.example.themovies.models.Movies
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -13,6 +14,7 @@ import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_login.*
 
@@ -23,12 +25,35 @@ class LoginActivity : AppCompatActivity() {
         const val TAG = "LoginActivity"
     }
 
-    lateinit var auth: FirebaseAuth
-    lateinit var googleSignInClient: GoogleSignInClient
+    private lateinit var auth: FirebaseAuth
+    private lateinit var googleSignInClient: GoogleSignInClient
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
+
+        val db = Firebase.firestore
+        auth = FirebaseAuth.getInstance()
+        val currentUser = auth.currentUser
+        if (currentUser!=null){
+            startActivity(Intent(this,MainActivity::class.java))
+            val user = hashMapOf(
+                "favourite" to ArrayList<Movies>()
+            )
+
+            db.collection("users")
+                .document(currentUser!!.uid)
+                .set(user)
+                .addOnSuccessListener {
+
+                    Toast.makeText(this, "Details Updated", Toast.LENGTH_SHORT).show()
+
+                }
+                .addOnFailureListener {
+                    Toast.makeText(this, it.message, Toast.LENGTH_LONG).show()
+                }
+        }
 
         supportActionBar?.title = getString(R.string.login)
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
